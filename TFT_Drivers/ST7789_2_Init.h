@@ -5,6 +5,14 @@
 
 {
 static const uint8_t PROGMEM
+#ifdef K210
+  st7789[] = {
+    3,
+    TFT_SLPOUT, TFT_INIT_DELAY, 255,
+    TFT_COLMOD, 1+TFT_INIT_DELAY, 0x55, 10,
+    TFT_DISPON, TFT_INIT_DELAY, 255
+    };
+#else  st7789[] = {
   st7789[] = {
     8,
     TFT_SLPOUT, TFT_INIT_DELAY, 255,
@@ -16,6 +24,7 @@ static const uint8_t PROGMEM
     TFT_NORON, TFT_INIT_DELAY, 10,
     TFT_DISPON, TFT_INIT_DELAY, 255
     };
+#endif
 
     commandList(st7789);
 }

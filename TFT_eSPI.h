@@ -50,6 +50,8 @@
   #include "Processors/TFT_eSPI_ESP8266.h"
 #elif defined (STM32)
   #include "Processors/TFT_eSPI_STM32.h"
+#elif defined (K210)
+  #include "Processors/TFT_eSPI_K210.h"
 #else
   #include "Processors/TFT_eSPI_Generic.h"
 #endif
