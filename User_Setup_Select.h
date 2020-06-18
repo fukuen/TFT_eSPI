@@ -21,7 +21,8 @@
 
 //#include <User_Setup.h>           // Default setup is root library folder
 
-#include <User_Setups/Maixduino_ST7789.h>  // Setup file configured for Maixduino
+//#include <User_Setups/Maixduino_ST7789.h>  // Setup file configured for Maixduino
+#include <User_Setups/MaixCube_ST7789.h>  // Setup file configured for Maixduino
 
 //#include <User_Setups/Setup1_ILI9341.h>  // Setup file configured for my ILI9341
 //#include <User_Setups/Setup2_ST7735.h>   // Setup file configured for my ST7735
