@@ -8,7 +8,12 @@
 
 // Select the SPI port to use
 //SPIClass& spi_ = SPI;
+#ifdef M5STICKV
+//SPIClass spi_(SPI0, TFT_SCLK, TFT_MISO, TFT_MOSI, 22, SPI_FREQUENCY);
+SPIClass spi_(SPI0, TFT_SCLK, TFT_MISO, TFT_MOSI, -1, SPI_FREQUENCY);
+#else
 SPIClass spi_(SPI0);
+#endif
 //SPIClass spi_(SPI0, 27, 26, 28, -1, 15000000U);
 
 ////////////////////////////////////////////////////////////////////////////////////////
@@ -31,9 +36,15 @@ void tft_io_init(void)
 //  plic_init();
 
   /* Init SPI IO map and function settings */
+#ifdef M5STICKV
+  fpioa_set_function(22, FUNC_SPI0_SS3);
+  fpioa_set_function(19, FUNC_SPI0_SCLK);
+  sysctl_set_spi0_dvp_data(1);
+#else
   fpioa_set_function(36, FUNC_SPI0_SS3);
   fpioa_set_function(39, FUNC_SPI0_SCLK);
   sysctl_set_spi0_dvp_data(1);
+#endif
 
   tft_hard_init(0, SS_PIN, RST_PIN, DCX_PIN, SPI_FREQUENCY, RST_GPIONUM, DCX_GPIONUM, DMA_CH);
 }
@@ -264,8 +275,12 @@ void TFT_eSPI::pushPixels(const void* data_in, uint32_t len){
 
   uint16_t *data = (uint16_t*)data_in;
 
+#ifdef K210
+  tft_write_byte((uint8_t*)data, len * 2);
+#else
   if (_swapBytes) tft_write_half(data, len);
   else while ( len-- ) {tft_Write_16S(*data); data++;}
+#endif
 //  if (_swapBytes) while ( len-- ) {tft_Write_16(*data); data++;}
 //  else while ( len-- ) {tft_Write_16S(*data); data++;}
 }

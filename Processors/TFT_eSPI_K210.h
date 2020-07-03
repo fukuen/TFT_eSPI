@@ -14,12 +14,21 @@
 // Include processor specific header
 #include "st7789_k210.h"
 
-  #define RST_GPIONUM 37
-  #define DCX_GPIONUM 38
-  #define RST_PIN 6
-  #define DCX_PIN 7
-  #define SS_PIN 3
-  #define DMA_CH 3
+#ifdef M5STICKV
+#define RST_GPIONUM 21
+#define DCX_GPIONUM 20
+#define RST_PIN 6
+#define DCX_PIN 7
+#define SS_PIN 3
+#define DMA_CH 3
+#else
+#define RST_GPIONUM 37
+#define DCX_GPIONUM 38
+#define RST_PIN 6
+#define DCX_PIN 7
+#define SS_PIN 3
+#define DMA_CH 3
+#endif
 
 // Processor specific code used by SPI bus transaction startWrite and endWrite functions
 #define SET_BUS_WRITE_MODE // Not used

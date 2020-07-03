@@ -5,7 +5,15 @@
 
 {
 static const uint8_t PROGMEM
-#ifdef K210
+#ifdef M5STICKV
+  st7789[] = {
+    4,
+    TFT_SLPOUT, TFT_INIT_DELAY, 255,
+    TFT_COLMOD, 1+TFT_INIT_DELAY, 0x55, 10,
+    TFT_INVON, TFT_INIT_DELAY, 10,
+    TFT_DISPON, TFT_INIT_DELAY, 255
+    };
+#elif defined (K210)
   st7789[] = {
     3,
     TFT_SLPOUT, TFT_INIT_DELAY, 255,

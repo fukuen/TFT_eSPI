@@ -2,6 +2,24 @@
 
 #define ST7789_2_DRIVER
 
+#ifdef M5STICKV
+#define TFT_WIDTH 240
+#define TFT_HEIGHT 280
+#endif
+#ifdef MAIXCUBE
+#define TFT_WIDTH 240
+#define TFT_HEIGHT 240
+#endif
+
+#ifdef M5STICKV
+#define TFT_MISO -1
+#define TFT_MOSI 18
+#define TFT_SCLK 19
+
+//#define TFT_CS    22
+//#define TFT_DC    20
+//#define TFT_RST   21
+#else
 #define TFT_MISO 26
 #define TFT_MOSI 28
 #define TFT_SCLK 27
@@ -9,7 +27,7 @@
 //#define TFT_CS    -1 // Not use
 //#define TFT_DC    38
 //#define TFT_RST   37 // Not use
-
+#endif
 
 #define LOAD_GLCD   // Font 1. Original Adafruit 8 pixel font needs ~1820 bytes in FLASH
 #define LOAD_FONT2  // Font 2. Small 16 pixel high font, needs ~3534 bytes in FLASH, 96 characters
@@ -24,7 +42,11 @@
 
 
 // #define SPI_FREQUENCY  27000000
+#ifdef M5STICKV
+#define SPI_FREQUENCY  40000000
+#else
 #define SPI_FREQUENCY  20000000
+#endif
 
 //#define SPI_READ_FREQUENCY  20000000
 

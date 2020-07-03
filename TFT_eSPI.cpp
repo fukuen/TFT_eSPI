@@ -306,7 +306,11 @@ void TFT_eSPI::init(uint8_t tc)
   #endif
 
   #if defined (K210)
+  #if M5STICKV
+  spi_.begin(TFT_SCLK, TFT_MISO, TFT_MOSI, -1);
+  #else
   spi_.begin(); // This will set HMISO to input
+  #endif
   #else
   spi.begin(); // This will set HMISO to input
   #endif
@@ -904,8 +908,10 @@ void TFT_eSPI::pushImage(int32_t x, int32_t y, int32_t w, int32_t h, uint16_t *d
   if (x < 0) { dw += x; dx = -x; x = 0; }
   if (y < 0) { dh += y; dy = -y; y = 0; }
 
+#ifndef K210
   if ((x + dw) > _width ) dw = _width  - x;
   if ((y + dh) > _height) dh = _height - y;
+#endif
 
   if (dw < 1 || dh < 1) return;
 
