@@ -6,6 +6,10 @@
 #define TFT_WIDTH 240
 #define TFT_HEIGHT 280
 #endif
+#ifdef MAIXAMIGO
+#define TFT_WIDTH 320
+#define TFT_HEIGHT 480
+#endif
 #ifdef MAIXCUBE
 #define TFT_WIDTH 240
 #define TFT_HEIGHT 240
@@ -19,6 +23,15 @@
 //#define TFT_CS    22
 //#define TFT_DC    20
 //#define TFT_RST   21
+#endif
+#ifdef MAIXAMIGO
+#define TFT_MISO 6
+#define TFT_MOSI 10
+#define TFT_SCLK 11
+
+//#define TFT_CS    12
+//#define TFT_DC    38
+//#define TFT_RST   37
 #else
 #define TFT_MISO 26
 #define TFT_MOSI 28

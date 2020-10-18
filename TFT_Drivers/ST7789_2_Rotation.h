@@ -8,7 +8,11 @@
       colstart = 0;
       rowstart = 0;
 #endif
+#ifdef MAIXAMIGO
+      writedata(TFT_MAD_MX | TFT_MAD_BGR);
+#else
       writedata(TFT_MAD_COLOR_ORDER);
+#endif
 
       _width  = _init_width;
       _height = _init_height;
@@ -19,7 +23,11 @@
       colstart = 0;
       rowstart = 0;
 #endif
+#ifdef MAIXAMIGO
+      writedata(TFT_MAD_MV | TFT_MAD_BGR);
+#else
       writedata(TFT_MAD_MX | TFT_MAD_MV | TFT_MAD_COLOR_ORDER);
+#endif
 
       _width  = _init_height;
       _height = _init_width;
@@ -30,7 +38,11 @@
        colstart = 0;
        rowstart = 80;
 #endif
+#ifdef MAIXAMIGO
+      writedata(TFT_MAD_MY | TFT_MAD_BGR);
+#else
       writedata(TFT_MAD_MX | TFT_MAD_MY | TFT_MAD_COLOR_ORDER);
+#endif
 
       _width  = _init_width;
       _height = _init_height;
@@ -40,7 +52,11 @@
       colstart = 80;
       rowstart = 0;
 #endif
+#ifdef MAIXAMIGO
+      writedata(TFT_MAD_MY | TFT_MAD_MX | TFT_MAD_MV | TFT_MAD_BGR);
+#else
       writedata(TFT_MAD_MV | TFT_MAD_MY | TFT_MAD_COLOR_ORDER);
+#endif
 
       _width  = _init_height;
       _height = _init_width;
